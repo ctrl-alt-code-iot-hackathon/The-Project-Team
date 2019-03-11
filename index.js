@@ -1,5 +1,18 @@
+//MQTT Dependencies
+
 var mqtt = require('mqtt');
 var client  = mqtt.connect('<Broker Address>');
+
+//MongoDB Dependencies
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+//Express and Socket.io Dependencies
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var path = require('path');
 
 client.on('connect', function () {
     client.subscribe('<sub_topic>', function (err) {

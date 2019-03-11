@@ -29,5 +29,13 @@
   "bugs": {
     "url": "https://github.com/teknicus/Road-Condition-Monitoring-Network/issues"
   },
-  "homepage": "https://github.com/teknicus/Road-Condition-Monitoring-Network#readme"
+  "homepage": "https://github.com/teknicus/Road-Condition-Monitoring-Network#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "mongodb": "^3.1.13",
+    "mqtt": "^2.18.8",
+    "path": "^0.12.7",
+    "socket.io": "^2.2.0"
+  }
 }
