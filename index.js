@@ -14,6 +14,13 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 
+app.use(express.static(__dirname + '/client'));
+app.use('/client', express.static(__dirname + '/client'));
+
+app.get('/', function(req, res) {
+    res.sendfile(path.join(__dirname + '/client', 'index.html'));
+});
+
 client.on('connect', function () {
     client.subscribe('<sub_topic>', function (err) {
         if (!err) {
