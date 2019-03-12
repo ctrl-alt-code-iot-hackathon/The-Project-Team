@@ -1,7 +1,7 @@
 //MQTT Dependencies
 
 var mqtt = require('mqtt');
-var client  = mqtt.connect('<Broker Address>');
+var client  = mqtt.connect('mqtt://localhost:1883');
 
 //MongoDB Dependencies
 var MongoClient = require('mongodb').MongoClient;
@@ -17,6 +17,8 @@ var path = require('path');
 var  alert = require('./model/alert');
 var  ticket = require('./model/ticket');
 
+var alerts = require('./routes/alert');
+app.use('/alerts', alerts);
 
 var dev_id = "init";
 var lat = "init";
@@ -35,16 +37,18 @@ app.get('/', function(req, res) {
     res.sendfile(path.join(__dirname + '/client', 'index.html'));
 });
 
-client.on('connect', function () {
-    client.subscribe('<sub_topic>', function (err) {
-        if (!err) {
-            client.publish('init', 'Server Online');
-        }
-    })
-});
+    client.on('connect', function () {
+        client.subscribe('message', function (err) {
+            if (!err) {
+                client.publish('init', 'Server Online');
+            }
+        })
+    });
 
 client.on('message', function (topic, message) {
     // message is Buffer
+    console.log("triggered");
+    client.publish('init', message);
     handleMessage(topic, message);
 });
 
@@ -86,7 +90,21 @@ function handleMessage(topic, message) {
             console.log("1 document inserted");
             db.close();
         });
-    });
+                    //socket.emit('alerts', temp);
+
+        });
+
+        //console.log("sending to WebUI" + temp);
+        //socket.emit('alerts', temp);
+
+
+
+    }
 
     //client.end()
-}
+
+
+http.listen(3000, function(){
+    console.log('Web server Active listening on *:3000');
+
+});

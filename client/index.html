@@ -3,7 +3,7 @@
 
 <head>
     <title>R.C.M.N.</title>
-
+    <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,12 +16,12 @@
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
             crossorigin=""></script>
-
+    <script src="js/index.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta charset="utf-8">
 
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="js/index.js"></script>
+
 
 </head>
 
@@ -38,12 +38,14 @@
     <div class="col l6 s12 m6">
         <div class="card-bx indigo lighten-4">
             <h5 class="txt1" align="center">Alerts</h5>
+            <a class="waves-effect waves-light btn btoff" onclick="findAlerts()">Find Alerts</a>
             <nav1 class="collection">
                 <ul id="abox">
 
                 </ul>
             </nav1>
             <br>
+
         </div>
     </div>
 
@@ -54,6 +56,7 @@
                 <div id="mapid" style="width: 600px; height: 400px;"></div>
                     <div class="row" align="center">
                         <a class="waves-effect waves-light btn btoff" onclick="showMap()">Refresh Map</a>
+
                     </div>
         </div>
     </div>
@@ -81,6 +84,7 @@
 
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="js/materialize.min.js"></script>
+
 </body>
 
 </html>
